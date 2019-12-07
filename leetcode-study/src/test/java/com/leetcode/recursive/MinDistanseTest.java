@@ -12,4 +12,10 @@ public class MinDistanseTest {
 
         Assert.assertEquals(5, MinDistanse.findMinDistanseRe(s1, s2, i, j));
     }
+
+    @Test
+    public void findMinDistanseDpTest() {
+        String s1 = "rad", s2 = "apple";
+        Assert.assertEquals(5, MinDistanse.findMinDistanseDp(s1, s2));
+    }
 }
