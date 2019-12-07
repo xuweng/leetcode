@@ -11,4 +11,10 @@ public class LongestCommonSubsequenceTest {
         int i = s1.length() - 1, j = s2.length() - 1;
         Assert.assertEquals(3, LongestCommonSubsequence.findLCSRe(s1, s2, i, j));
     }
+
+    @Test
+    public void findLCSDpTest() {
+        String s1 = "abcde", s2 = "ace";
+        Assert.assertEquals(3, LongestCommonSubsequence.findLCSDp(s1, s2));
+    }
 }
