@@ -1,0 +1,15 @@
+package com.leetcode.recursive;
+
+import com.leetcode.dp.MinDistanse;
+import org.junit.Assert;
+import org.junit.Test;
+
+public class MinDistanseTest {
+    @Test
+    public void findMinDistanseReTest() {
+        String s1 = "rad", s2 = "apple";
+        int i = s1.length() - 1, j = s2.length() - 1;
+
+        Assert.assertEquals(5, MinDistanse.findMinDistanseRe(s1, s2, i, j));
+    }
+}
