@@ -12,6 +12,25 @@ package com.leetcode.dp;
  */
 public class ZeRoOneBeiBao {
     /**
+     * 递归最大价值
+     *
+     * @param v
+     * @param p
+     * @param n
+     * @param vMax
+     * @return
+     */
+    public static int maxPRe(int[] v, int[] p, int n, int vMax) {
+        if (n <= 0 || vMax <= 0) {
+            return 0;
+        }
+        if (vMax < v[n]) {
+            return maxPRe(v, p, n - 1, vMax);
+        }
+        return Math.max(maxPRe(v, p, n - 1, vMax), maxPRe(v, p, n - 1, vMax - v[n]) + p[n]);
+    }
+
+    /**
      * dp最大价值
      *
      * @param v    体积
