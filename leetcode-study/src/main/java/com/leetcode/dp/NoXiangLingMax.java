@@ -55,4 +55,37 @@ public class NoXiangLingMax {
         memo[i] = Math.max(noXiangLingMaxReMemo(a, i - 2) + a[i], noXiangLingMaxReMemo(a, i - 1));
         return memo[i];
     }
+
+    /**
+     * dp不相邻的数的和的最大值
+     * 一维dp
+     * 二维dp
+     * 最多三维dp
+     * dp[i]:前i个最大值
+     *
+     * @param a
+     * @return
+     */
+    public static int noXiangLingMaxDp(int[] a) {
+        int i = a.length;
+        if (i <= 0) {
+            return 0;
+        }
+        if (i <= 1) {
+            return a[0];
+        }
+        if (i <= 2) {
+            return Math.max(a[0], a[1]);
+        }
+        int[] dpMax = new int[i + 1];
+        dpMax[0] = 0;
+        dpMax[1] = a[0];
+        dpMax[2] = Math.max(a[0], a[1]);
+
+        for (int j = 2; j <= i; j++) {
+            dpMax[j] = Math.max(dpMax[j - 2] + a[j - 1], dpMax[i - 1]);
+        }
+
+        return dpMax[i];
+    }
 }

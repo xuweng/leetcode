@@ -20,4 +20,11 @@ public class NoXiangLingMaxTest {
 
         Assert.assertEquals(15, NoXiangLingMax.noXiangLingMaxReMemo(a, i));
     }
+
+    @Test
+    public void noXiangLingMaxDpTest() {
+        int[] a = {1, 2, 4, 1, 7, 8, 3};
+
+        Assert.assertEquals(15, NoXiangLingMax.noXiangLingMaxDp(a));
+    }
 }
