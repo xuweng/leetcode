@@ -40,10 +40,36 @@ public class SelectSum {
      * <p>
      * f[i,s]:前i个数的和是否等于s
      *
-     * @param a
+     * @param a 数组
+     * @param s 和,s>=0
      * @return
      */
-    public static boolean selectSumDp(int[] a) {
-        return true;
+    public static boolean selectSumDp(int[] a, int s) {
+        int i = a.length;
+        boolean[][] dpHas = new boolean[i + 1][s + 1];
+
+        for (int k = 0; k <= s; k++) {
+            dpHas[0][k] = false;
+        }
+        for (int k = 0; k <= i; k++) {
+            dpHas[k][0] = true;
+        }
+        if (i >= 1) {
+            for (int k = 0; k <= s; k++) {
+                dpHas[1][k] = (a[0] == k);
+            }
+        }
+
+        for (int k = 2; k <= i; k++) {
+            for (int l = 1; l <= s; l++) {
+                if (a[k - 1] > l) {
+                    dpHas[k][l] = dpHas[k - 1][l];
+                } else {
+                    dpHas[k][l] = dpHas[k - 1][l] || dpHas[k - 1][l - a[k - 1]];
+                }
+            }
+        }
+
+        return dpHas[i][s];
     }
 }

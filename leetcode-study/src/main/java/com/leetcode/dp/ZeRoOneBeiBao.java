@@ -16,12 +16,12 @@ public class ZeRoOneBeiBao {
      *
      * @param v
      * @param p
-     * @param n
+     * @param n    数组的下标
      * @param vMax
      * @return
      */
     public static int maxPRe(int[] v, int[] p, int n, int vMax) {
-        if (n <= 0 || vMax <= 0) {
+        if (n < 0 || vMax <= 0) {
             return 0;
         }
         if (vMax < v[n]) {
@@ -50,10 +50,10 @@ public class ZeRoOneBeiBao {
 
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= vMax; j++) {
-                if (v[i] > j) {
+                if (v[i - 1] > j) {
                     dpMax[i][j] = dpMax[i - 1][j];
                 } else {
-                    dpMax[i][j] = Math.max(dpMax[i - 1][j], dpMax[i - 1][j - v[i]] + p[i]);
+                    dpMax[i][j] = Math.max(dpMax[i - 1][j], dpMax[i - 1][j - v[i - 1]] + p[i - 1]);
                 }
             }
         }
