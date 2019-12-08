@@ -22,4 +22,25 @@ public class NumberSanJiao {
 
         return Math.max(maxSumRe(a, n, i + 1, j), maxSumRe(a, n, i + 1, j + 1)) + a[i][j];
     }
+
+    /**
+     * dp最大的路径之和
+     *
+     * @param a
+     * @param n
+     * @return
+     */
+    public static int maxSumDp(int[][] a, int n) {
+        int[][] dpMax = new int[n + 1][n + 1];
+        for (int i = 1; i <= n; i++) {
+            dpMax[n][i] = a[n - 1][i - 1];
+        }
+        for (int i = n - 1; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                dpMax[i][j] = Math.max(dpMax[i + 1][j], dpMax[i + 1][j + 1]) + a[i - 1][j - 1];
+            }
+        }
+
+        return dpMax[1][1];
+    }
 }
