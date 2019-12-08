@@ -22,4 +22,12 @@ public class QieGangTiaoTest {
 
         Assert.assertEquals(10, QieGangTiao.qieGangTiaoReMemo(p, n));
     }
+
+    @Test
+    public void qieGangTiaoDpTest() {
+//        int[] p = {1, 5, 8, 9, 10, 17, 17, 20, 24, 30};
+        int[] p = {1, 5, 8, 9};
+
+        Assert.assertEquals(10, QieGangTiao.qieGangTiaoDp(p));
+    }
 }
