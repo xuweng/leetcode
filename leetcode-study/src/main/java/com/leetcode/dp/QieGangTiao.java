@@ -1,5 +1,7 @@
 package com.leetcode.dp;
 
+import java.util.Arrays;
+
 /**
  * 切钢条
  * <p>
@@ -8,6 +10,13 @@ package com.leetcode.dp;
  * 选or不选
  */
 public class QieGangTiao {
+    //备忘录
+    private static int[] memo = new int[11];
+
+    static {
+        Arrays.fill(memo, -1);
+    }
+
     /**
      * 切钢条
      * 将钢条从左边切割下长度为i的一段，只对右边剩下的长度为n-i的一段继续进行切割，对左边的一段则不再进行切割。
@@ -29,4 +38,29 @@ public class QieGangTiao {
 
         return max;
     }
+
+    /**
+     * 备忘录
+     *
+     * @param p
+     * @param n
+     * @return
+     */
+    public static int qieGangTiaoReMemo(int[] p, int n) {
+        if (memo[n] != -1) {
+            return memo[n];
+        }
+        if (n <= 0) {
+            return 0;
+        }
+
+        int max = -1;
+        for (int j = 1; j <= n; j++) {
+            max = Math.max(max, p[j - 1] + qieGangTiaoReMemo(p, n - j));
+        }
+        memo[n] = max;
+        return max;
+    }
+
+
 }
