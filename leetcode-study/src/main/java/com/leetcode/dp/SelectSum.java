@@ -11,10 +11,12 @@ package com.leetcode.dp;
 public class SelectSum {
     /**
      * 递归是否存在和等于sum的数字
+     * <p>
+     * 一般来说递归都要对参数判断,这里都要对i和s判断
      *
      * @param a
      * @param i a的下标
-     * @param s
+     * @param s 给出的和
      * @return
      */
     public static boolean selectSumRe(int[] a, int i, int s) {
@@ -23,6 +25,9 @@ public class SelectSum {
         }
         if (i == 0) {
             return s == a[i];
+        }
+        if (s <= 0) {
+            return true;
         }
         if (a[i] > s) {
             return selectSumRe(a, i - 1, s);
