@@ -5,6 +5,30 @@ package com.leetcode.dp;
  * d(i)就是找以A[i]结尾的lis
  */
 public class LIS {
+
+    /**
+     * 递归最长上升子序列
+     *
+     * @param a
+     * @param i 数组下标
+     * @return
+     */
+    public static int lisRe(int a[], int i) {
+        if (i < 0) {
+            return 0;
+        }
+        if (i == 0) {
+            return 1;
+        }
+        int max = -1;
+        for (int j = 0; j <= i - 1; j++) {
+            int temp = a[j] > a[i] ? 1 : lisRe(a, j) + 1;
+            max = Math.max(max, temp);
+        }
+
+        return max;
+    }
+
     /**
      * dp最长上升子序列
      *
