@@ -2,6 +2,8 @@ package com.leetcode.dp;
 
 /**
  * 最长的回文子串
+ * <p>
+ * 递归字符串模板
  */
 public class LongestPalindrome {
     /**
