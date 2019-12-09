@@ -1,6 +1,8 @@
 package com.leetcode.dp;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 最长上升子序列
@@ -86,5 +88,53 @@ public class LIS {
         }
 
         return dpMax[n];
+    }
+
+    /**
+     * 二分查找最长上升子序列
+     *
+     * @param a
+     * @return
+     */
+    public static int lisBinary(int[] a) {
+        if (a.length == 0) {
+            return 0;
+        }
+        if (a.length == 1) {
+            return 1;
+        }
+        List<Integer> list = new ArrayList<>();
+        list.add(a[0]);
+
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] > list.get(list.size() - 1)) {
+                list.add(a[i]);
+            } else {
+                list.set(binarySearch(list.toArray(new Integer[0]), a[i], 0, list.size() - 1), a[i]);
+            }
+        }
+
+        return list.size();
+    }
+
+    /**
+     * @param a
+     * @param key 关键字
+     * @param i   低下标
+     * @param j   高下标
+     * @return
+     */
+    private static int binarySearch(Integer[] a, int key, int i, int j) {
+        if (i >= j) {
+            return i;
+        }
+        int m = (i + j) / 2;
+        if ((key <= a[m]) && ((m - 1 < 0) || (key > a[m - 1]))) {
+            return m;
+        } else if (key < a[m]) {
+            return binarySearch(a, key, i, m - 1);
+        } else {
+            return binarySearch(a, key, m + 1, j);
+        }
     }
 }
