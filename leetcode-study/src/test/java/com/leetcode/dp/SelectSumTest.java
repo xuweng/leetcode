@@ -1,4 +1,4 @@
-package com.leetcode.recursive;
+package com.leetcode.dp;
 
 import com.leetcode.dp.SelectSum;
 import org.junit.Assert;

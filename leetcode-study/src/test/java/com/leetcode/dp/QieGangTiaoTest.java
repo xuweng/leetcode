@@ -1,4 +1,4 @@
-package com.leetcode.recursive;
+package com.leetcode.dp;
 
 import com.leetcode.dp.QieGangTiao;
 import org.junit.Assert;
