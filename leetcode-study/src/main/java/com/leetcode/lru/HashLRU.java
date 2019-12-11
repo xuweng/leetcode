@@ -50,7 +50,7 @@ public class HashLRU {
      */
     private static Node<Integer> getPrefix(Node<Integer> node, Integer date) {
         Objects.requireNonNull(node);
-        //没有头结点
+        //没有头结点,第一个元素没有前缀,最后一个元素没有后缀
         Node<Integer> pre = node;
 
         while (pre.next != null) {
