@@ -18,12 +18,12 @@ public class LRU {
     private static Integer size = 0;
 
     /**
-     * 缓存
+     * 插入
      *
      * @param date
      * @return
      */
-    public static int cache(Integer date) {
+    public static int insert(Integer date) {
         Node<Integer> pre = getPrefix(date);
         //如果此数据之前已经被缓存在链表中了,这时缓存大小没变
         if (pre != null) {

@@ -8,7 +8,7 @@ public class LRUTest {
     public void cacheTest() {
         int[] date = {1, 2, 3, 4, 5, 6, 2, 3};
         for (int d : date) {
-            LRU.cache(d);
+            LRU.insert(d);
         }
 
         Assert.assertEquals(6, LRU.getSize());
